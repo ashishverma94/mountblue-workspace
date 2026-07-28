@@ -1,0 +1,181 @@
+1. Man command is used to display the user manual for commands, system calls and configuration files.
+   Syntac : man [options] command
+   man pwd : Displays the page for pwd command
+   man -k copy : List all manual pages related to the keyword copy
+
+2. cd command is used to change the directory
+   c- return to the previous directory.
+
+3. cp command is used to copy the files and directory in linux.
+   cp [options] source destination
+   The -r ( recursive ) or -R is used to copy all directories including files and folders.
+   By default cp copies only files if use -r then it will also copy directories.
+   cp -r dir1 dir2 Backup/ copies dir1 and dir2 to Backup.
+
+4. mv command is used to move file or directories from one place to another. It is also used to rename then file and folders
+   mv [options] source destination
+   To rename a file use - mv file1.txt file2.txt
+   To move a file - mv file1.txt Documents
+   To move a directory - mv Doc1 Doc2
+   mv -i reports.txt Documents- if reports.txt already exists in Documents, then you will be asked before it is overwritten.
+   mv -n reports.txt Documents- moves without overwriting existing file.
+
+5. ls command displays the content and directories of a directlry
+   ls -l - displays files in long format.
+   ls -a - displays hidden files also.
+   ls -h - displays file size in human readable format.
+   ls -t - sort files by modification time
+   ls -S - sort files by sizes.
+
+6. rm command is used to delete files and directories.
+   rm [options] file_name
+   rm file.txt file2.txt - delete the files.
+   rm -d Folder- remove empty directory.
+   -i delete with confirmation
+   -f force delete a file or directory
+
+7. chmod used ot change premission
+   chmod 755 file.txt
+   chmod u+rw file.txt
+   u-> user, g-> group, o-> others, a-> all
+
+8. chown is used to change the owner and group of file and directory.
+   chown [options] owner[:group] file_name;
+   chown john:developers file.txt , now owner is john and group is developer.
+
+9. sudo ( super user do ) is used to execute command with elevated previliges usually as a root user ( admin ).
+   sudo [command]
+   sudo apt install nginx
+   sudo rm var/log/test.log ( delete file owned by root )
+   sudo -l ( check weather your user has sudo privileges )
+
+10. apt command is used to install, remove and manage software and packages.
+   sudo apt update ( update the package list)
+   sudo apt upgrade ( upgrade the package list ) 
+   sudo apt autoremove ( remove unused dependencies ) 
+
+11. cat is used to display, create, combine and copy the files.
+    cat filename.txt -> shows content of file
+    cat -n filename.txt -> shows content of file with line numbers
+    cat -b filename.txt -> shows only non empty line numbers
+    cat > filename.txt -> now type content then press ctrl+d
+    cat >> filename.txt -> used to append then content
+    cat file1.txt file2.txt > combined.txt
+
+12. less command is used view large file page by page. Allows forward and backword scrolling.
+    less fil.txt
+13. more command is used to view large file one screen at a time.
+    Only forward scrolling is there.
+
+14. tail command shows last line of file
+    tail -n 10 file.txt
+
+15. rsync command is used to synchronize files/directories between locations and system.
+    when you run `rsync source destination` only new and modified files are copied. Original source files are not deleted.
+
+16. grep command is used to search pattern and text in a file.
+    grep "error" log.txt
+    -i ignores uppercase and lowercase difference.
+    -n shows line numbers
+    -r search recursively in directories.
+    grep -r "error" log.txt
+    grep -r "error" /home/user
+
+17. find command searchs local files, directories based on name, type, size, premission.
+    find [directory] -name [filename] 
+    find . -name a.txt
+    find . -size +10M
+    find var/log -name "*log"
+
+18. sort commands sort lines of text in files. By default sorting is in alphabetical order.
+    sort name.txt
+    sort -r ( reverse order)
+    sort -n ( numeric sorting )
+    sort -u ( remove duplicates lines ) 
+
+19. date command is used to print the currend date and time.
+    date +"%Y-%m-%d"
+
+20. wc command is used to count lines, words, characters in a file.
+    wc -l file.txt ( count line )
+    wc -w file.txt ( count line )
+    wc -c file.txt ( count characters )
+
+21. tree is used to display files and directories in tree like manner.
+    tree -d - shows directories only.
+    tree -L 2 - shows upto two level.
+    tree -a - shows hidden files also.
+
+--------------------------------------------------------------------------------------------
+22. ps used to display running processes. Shows information like process id, CPU usage and process status.
+    A process is a program that is currently running (executing) in the computer's memory. 
+    Each process has its own Process ID (PID) and uses system resources like CPU and memory.
+    ps -f -> displays in full format.
+    ps -u username -> displays processes for particular user.
+    ps aux -> displays all process with CPU and memory usage.
+    -f shows processes in full detail and -e shows all running processes.
+
+23. top command used to display real time information about running processes.
+    ps shows snapshot of processes while top shows processes in real time.
+
+24. df command shows total, used and available disk space.
+    df -h ( in human readable format ) 
+
+25. uname is used to display operating system and kernel version.
+    uname -a -> shows all system information.
+    uname -r -> shows kernel version.
+    uname -m -> shows machine architecture.
+
+26. free shows total, used, available RAM memory.
+    free -h -> in human readable format.
+    free -m -> shows memory in MB.
+    free -g -> shows memory in GB.
+
+27. lspci command list all PCI (Peripheral Component Interconnect) devices connected to the system.
+    Display graphic cards, network adapters, sound cards and storage controllers.
+    lspci -v -> detailed information
+    lspci -vv -> more detailed information 
+    lspci -k -> shows device drivers in use.
+
+28. kill used to terminate running process using PID.
+    kill -9 1234 ( forcefully terminate )
+    kill -15 1234 ( gracefully terminate the process ) 
+    kill -2 1234 ( interrupts the process same as ctrl+c )
+    kill -1 1234 ( tells the process to reload its configuration or restart )
+
+29. python3 -m http.server 8000 run server on port 8000
+    -m is module name
+
+30. ping is used to check internet connectivity between computer host.
+    ping -c 4 google.com -> sends only 4 ping requests.
+    ping -i 2 google.com -> sends pings requests in every 2 seconds.
+    ping -s 100 google.com -> sends package of 100 bytes.
+
+31. ssh ( secure cell ) is used to securely connect to a remote computer over a network.
+    It provide encrypted communication for remote login and command execution.
+    ssh user@192.168.1.10
+    connect with machine using this ip address as a user.
+    ssh -p 5000 user@server connect using custom port.
+
+32. xargs tales the output of previous command as input and passes it as arguments to a new command.
+    echo "file.txt" | xargs rm
+    first commands output is "file.txt" it passes to next command as a arguments xargs converts it into rm file.txt and remove it.
+
+33. printenv used to display env varialbes of current shell.
+    printenv -> print all varialbes
+    printenv -> HOME print the value stored in HOME variable.
+
+34. nano used to create and edit files directly into terminal.
+    nano file_name 
+    user Ctrl+W to search keyword, Ctrl+K to cut a line and Ctrl+U to paste a line and Ctrl+X to exit.
+
+35. awk works by reading input line by line and perform actions on columns.
+    awk '{print $1}' file.txt
+
+36. sed used for searching, replacing and editing text in files. It processes text line by line.
+    sed 's/old/new/' file.txt replaces every old word with new in file.txt.
+    sed -n '100,200p' file.txt
+
+    
+
+
