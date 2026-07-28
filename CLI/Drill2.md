@@ -101,7 +101,7 @@ ps -C firefox -o pid,ppid
 - -o gives the output format means pid prints first than ppid 
 ---
 
-### 2) List your browser's process ids (pid) and parent process ids (ppid)
+### 2) Stop the browser application from the command line
 
 ### Command
 ``` 
