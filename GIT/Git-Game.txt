@@ -1,0 +1,4 @@
+1. git checkout bugFix^ -> moves to the parent commit of bugFix
+2. git checkout bugFix HEAD~4 move to the top 4 levels.
+3. git branch -f main HEAD~3
+4. git branch -f main C6 - bring from top to bottom

@@ -1,0 +1,97 @@
+/////////////////////////////////////////// COLLECTIONS ///////////////////////////////////////////
+1.  Arrays VS Collections - 
+    - Arrays are fixed in size but Collections are growable.
+    - Performance wise Arrays are good.
+    - Contain only homogeneous data but Collections contain heterogeneous data.
+    - Arrays does not contain ready-made methods but Collections have.
+    - Arrays can hold both premitives & objects but Collections can only hold objects.
+    - With respect to memory Arrays are not recommended.
+
+2.  If we want to represent group of individual objects as a single entity. Then we should go for collections.
+
+3.  It contains Several classes and interfaces which can be used to represent a group of individual objects as a single entity
+
+4.  Collection is the root interface for most collections type. It is most not all, because Map is not subtype of collection, Map store KV pair
+    Not individual objects. Collection is interface it extends Iterable(I)
+    Collection is interface defines common operations like add(), remove(), size(), clear().
+
+5.  Collections is a utility class with static helper methods.
+    Collections.sort(list);
+    Collections.reverse(list);
+    Collections.shuffle(list);
+
+    Java collections takes objects not premitives. Because - 
+    - collections store references.
+    - Generics works only with objects and collections used generics.
+    - Every objects has some methods like equals(), hashCode(), toString() but premitive methods dont have these.
+
+
+6.  Iterable is the parent interface of Collection. It allows objects to be used in the enhanced for-each loop.
+    for-each works because of the Collection extends Iterable
+
+    List<Integer> list = new List<Integer>();
+       - Wrong because List is interface and you cannot instantiate interface
+
+    List<Integer> list = new ArrayList<Integer>();
+       - Recommended- You can use the methods defined by List interface.
+       - Object type is ArrayList(class).
+       - Later you decide to use LinkedList, just change the right-side.
+
+    ArrayList<Integer> list = new ArrayList();
+       - This works but your code is tied specifically to ArrayList.
+       - If you want to use LinkedList you have to change the type to.
+    
+    It is rule that in left side you have to use Interface and in rightside you have to use class.
+
+/////////////////////////////////////////// LIST ///////////////////////////////////////////
+1.  List is an interface in Java Collections that represents ordered collections of elements. Every element has an index starting from 0.
+    - Maintains insertion ordere
+    - Allows duplicates
+    - Allows null values
+    - Support indexed-based access
+    - Can grow dynamically
+
+2.  ArrayList is resizable array implementation of List interface. Fast random access using index and not synchronized.
+
+3.  LinkedList - internal structure is double linked list. each node contain previous | data | next
+    Implements both List and Queue
+
+4.  Vector - Similar to ArrayList, synchronized and thread-safe. Slower because of synchronization.
+
+5.  Stack - Follows LIFO principle.
+
+6.  Set(I) - Does not allows duplication. No index-based access. Used when uniquness is required.
+
+7.  HashSet - Allows one null value. Does not maintain order. Uses hashCode() and equals().
+
+8.  LinkedHashSet - Maintains insertion orders. Internally uses Hash table + LinkedList. Allows null.
+
+9.  TreeSet - red-black tree. Store elements in sorted order. Does not allow duplicates and null because TreeSet is sorted and null cannot be compared.
+
+10. Queue(I) - Follows LIFO principle.
+
+11. PriorityQueue - Elements processed according to priority. No insertion order. Uses heap internally.
+    Default is min-heap. Does not allow null.
+
+12. ArrayDeque - Double ended queue. Insert remove from both sides. Does not allow null. Uses addFirst(), addLast(), removeFirst(), removeLast().
+
+13. Map(I) - Keys must be unique. Values can duplicates. Not a part of Collection(I).
+
+14. HashMap - Allows one null key and multiple null values. No order. Average O(1) operations.
+
+15. LinkedHashMap - Maintains insertion order.
+
+16. TreeMap - Stores keys in sorted order. No null keys.
+
+17. Hashtable - Thread-safe, does not allow null key and value.
+
+18. Iterator - Used to traverse collections. Methods hasNext(), next(), remove().
+
+19. ListIterator - Only for List. Move forward-backward and modify elements.
+
+20. Streams - Java streams allows you to process collection of data in efficient way. A stream is a sequence of elements that supports operations
+    like filtering, mapping, sorting and reducing.
+
+    Streams can be consumed only once. A stream is like a pipeline. Once the data is flowed through it there's nothing left to process.
+
+    Iterable is for traversing data and streams is for processing data.

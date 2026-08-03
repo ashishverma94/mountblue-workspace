@@ -1,0 +1,741 @@
+01. JDK - JDK is a software kit used to develop java applications. It provide everything to create, compile, debug and run java programs.
+
+02. JRE - Java Runtime Environment is a package that provide the environment to run them. When .class file run JRE loads it into JVM and executes it.
+
+03. JVM - Java Virtual Machine is the actual execution engine that run the code line by line.
+
+04. Data Types - Specify the type of data variable can store. There are two types of data type- Primitive & Non-Primitive(reference) type.
+
+05. Primitive Data Types - These are predefined by java and store simple values. 
+     byte - 1 byte   
+     short - 2 bytes
+     int - 4 bytes
+     long - 8 bytes
+     float - 4 bytes
+     double - 8 bytes
+     char - 2 bytes
+     boolean - 1 bit
+
+     1 byte = 8 bits
+     Range of numbers = -2^(8*byte-1) to 2^(8*byte-1)-1
+
+06. Non-Primitive(reference) - They store references (memory addresses) to objects rather than the actual value. 
+    Examples include String, arrays, classes, interfaces, and wrapper classes.
+
+    String name = "Alice"
+    here String is a class and every string value is a object. Java creates string object containing Alice. 
+    The variable name stores reference to that object.
+
+    It is roughly equivalent to - String name = new String("Alice");
+    Others examples are - 
+    int[] arr = {1,2,3};
+    Student s1 = new Student();
+
+07. Value storage - Primitive variable stores actual value. on the stack.
+    In non Primitive variable is stored in stack and value is stored in Heap ( or string pool which is special part of heap );
+
+08. Type Conversion - There are two type of type conversion in java -
+    a) Implicit ( Widening/Automatic ) type conversion,
+    b) Explicit ( Narrowing/Type casting ) type conversion
+
+09. Implicit type conversion - Java automatically converts smaller data type to larger type whenever there is no risk of losing data.
+    Order of implicit conversion -  byte -> short -> int -> long -> float -> double
+                                             |
+                                            char -> int 
+     
+     int num = 100  // 100
+     double val = num // 100.0 
+
+     Java automatically converts 100 -> 100.0 
+
+     char ch = 'A' ; // 'A' 
+     int ascii = ch ; // 65 
+
+     since characters are stored using unicode values. Java converts 'A' to its numeric value.
+
+10. Explicit ( Narrowing ) - Sometime we convert larger data type into smaller one is called Narrowing or Explicit type conversion.
+    double price = 99.23 ;
+    int amount = (int)price ; // 99 the decimal part is removed.
+    int n = 130 
+    byte b = (byte)n ; // -126 ( data loss during narrowing ) ;
+
+    it we add two byte then result is int ( automatic promotion ) ;
+
+    Why? Byte stores values from -128 to 127 , 130 is out of range 
+  
+11. Default values of different data types - 
+    byte      0
+    short     0
+    int       0
+    long      0
+    double    0.0
+    float     0.0
+    boolean   false 
+    char      `\u0000`
+    String    null
+    Object    null
+
+12. Arrays - Array is the collection of multiple items of the same data types. Stored in contiguous memory locations.
+    int[] arr = {10, 20, 30, 40};
+    Declaration: int[] arr, int arr[] -> both are valid.
+    Creation: int[] arr = new int[5] ; // all values will be zero by default.
+    Initialization: int[] arr = {1,2,3} // you can access element using arr[1] for index 1 element.
+
+    Enhanced for loop to access all values - 
+    for ( int value : arr ){
+          System.out.println(value) ;
+    }
+
+    For length - Array have length, strings have length() and collections have size() ;
+    If we try to access index out of length then we got - ArrayIndexOutOfBoundsException
+
+    Array is an Object;
+    System.out.println(arr instanceof Object); // true 
+    int[] a = {1,2,3};
+    int[] b = a;
+
+    Both points to same location, if we change a then changes in b is also reflected.
+
+    Cloning of array - 
+    int[] b = a.clone() ;
+    int[] b = Arrays.copyOf(a,a.length) ;
+
+13. Array functions - 
+    Arrays.equals(a,b) ; // check equality 
+    Arrays.sort(a) // sort the array 
+    Arrays.binarySearch(a,20) // array must be sorted 
+    Arrays.fill(arr,20) // fill full array with value 20 
+    Arrays.toString(arr) // for printing 
+
+    The maximum array size in Java is max integer value - Integer.MAX_VALUE ( 2147483647 )(2^31-1). Actual limit is slightly smaller and 
+    depends on the JVM and available heap memory.
+
+    In case of boolean, it uses less memory per elements. You can fil larger data within a given heap. But you cannot have 4x more elements
+    than an int[]. Because indexing of array is int.
+
+    Array is a fixed collections of indexed data of homogeneous data.
+    We can represent multiple values using single variable. So that readability of code will be improved.
+
+14. Types of operators - 
+    a) Arithmatic Operators 
+    b) Ternary Operators 
+    c) Logical Operators 
+    d) Unary Operators 
+    e) Assignment Operators ( = , += )
+    f) Relation Operators ( >,< = )
+    g) Bitwise & Shift Operators 
+    h) Type comparison operator ( instanceof ) 
+
+15. Switch - It is used when we have multiple options for a single value.
+    Syntac - 
+
+    switch(expression){
+     case value1:
+      // statements 
+      break;
+     case value2:
+      // statements
+      break;
+     default:
+      // statemtns
+    }
+
+16. do-while loop - A do while loop executes the code block at least once because the condition is checked at the end of loop.
+    do{
+     // code 
+    } while( condition )
+
+17. Jump statemtnts - 
+    break: used to exit from loop or switch 
+    continue: skips the current iteration
+    return: exit from the method or return a result of function
+
+18. Class - 
+    A class is a blueprint or template to create objects.
+    A class defines - 
+       Data (variable / properties )
+       Behaviour (mehtods) 
+    A class itself does not occupy memory for instance variable until an object is created.
+
+    class Student { // class
+
+      String name; // data members 
+      int age;
+
+     void display() { // methods
+        System.out.println(name);
+        System.out.println(age);
+     }
+   }
+
+19. Objects - An object is an instance of class. A class is only design whereas an object is a real entity created from that design.
+    ClassName objectName  = new ClassName()
+
+20. Constructor - are special methods used to initialize objects. ( give initial value to object ) ;
+    constructor name should be same as ClassName.
+    constructor do not have return type.
+    constructor executes automatically. 
+
+    There are three types of constructors - 
+    a) Default constructor - A constructor that is provided by java if no constructor is written.
+       class Student{
+          int age ;
+       }
+
+       if we print age by creating the object of this class then we got the value as 0. Because java gives default values.
+     
+    b) No argument constructor - A constructor with no parameter.
+       class Student {
+          Student() {
+               System.out.println("No argument constructor");
+          }
+       }
+
+    c) Parameterized constructor - A constructor that accepts values.
+
+21. Constructor Overloading - A class have multiple constructors. Java decides which constructor is called based on arguments.
+
+22. Static keyword - static is a keyword used to create members that belongs to class instead of objects.
+    class Student {
+      String name;
+      static String college = "ABC College";
+    }
+
+    Student s1 = new Student();
+    Student s2 = new Student();
+
+    here s1.name and s2.name is different but college is same for both.
+
+    A method is declared using static is belongs to class no need to create object to access that method.
+
+    Rules - 
+    a) static method can access static variables.
+    b) can call other static methods. 
+    c) cannot access directly non-static variables.
+
+       class Test {
+          int x=10;
+          static void display(){
+               System.out.println(x); // Error
+          }
+       }
+
+       Because x belongs to object.
+
+23. static block - It executes once when class is loaded.
+
+     class Demo {
+         static {
+             System.out.println("Static block executed");
+         }
+     
+         public static void main(String args[]) {
+             System.out.println("Main method");
+         }
+     }
+
+
+/////////////////////////////////////////// INHERITANCE ///////////////////////////////////////////
+
+24. Inherintance is OOP feature in java that allows one class to acquire properties and methods of another class.
+    The class that provides properties is called parent/super/base class.
+    The class that inherits properties is called child/sub/derived class.
+
+25. Why we use Inherintance ? 
+    a) code reusability
+    b) method overriding 
+    c) supports run tiime polymorphism 
+
+26. Types of inheritance - 
+    a) Single inheritance - one parent and one child 
+    b) Multilevel inheritance - a chain of inheritance 
+    c) Hierarchical inheritance - one parent multiple children 
+
+27. Multiple Inheritance - No supported with class.
+    class A{}
+    class B{}
+    class C extends A,B {} // this gives error
+
+28. Constructors in inheritance - constructors are neither inherited not overridden only overloaded. 
+    When a child object is created parent constructor runs first then child constructor runs.
+
+29. super keyword - super() is used to call the immediate parent's constructor.
+    Writing super() in child constructor is not mandatory. Java automatically inserts it.
+    It is used to access parent class variable.
+
+     class Parent {
+         int x = 10;
+     }
+     
+     class Child extends Parent {
+         int x = 20;
+
+         void display() {
+             System.out.println(x);
+             System.out.println(super.x);
+         }
+     }
+
+     Inserting super is mandatory when parents does not have default constructor.
+
+     class Parent {
+         Parent(int x) {
+             System.out.println(x);
+         }
+     }
+     
+     
+     class Child extends Parent {
+         Child() {
+             super(10) // if it is not there then -> compilation error
+             System.out.println("Child");
+         }
+     }
+
+     In this case Java adds super() but there is Parent(int x ). So Java cannot initialize the parent
+
+30. final keyword and inheritance - final class cannot be inherited.
+    final class A{} // cannot be inherited.
+    final method cannot be overridden 
+
+    a child class cannot access private variables of parent .
+    private methods are not inherited. 
+
+31. Constructor execution order in inheritance - When an object of child class is created parent constructor executes first.
+    Because child class contain parent part inside it. The parent must be initialized before the child part.
+
+32. Method Overloading - Same method name but different parameters in same class.
+    It is called compile time polymorphism.
+
+     class Calculator {
+          int add(int a, int b){
+              return a+b;
+          }
+
+          int add(int a, int b, int c){
+              return a+b+c;
+          }
+     }
+
+     Rules of overloading - 
+     a) only changing return type is not enough.
+        int add(int a,int b)
+        double add(int a,int b)
+
+        It gives compilation error because parameters are same.
+
+        This is valid -
+          add(int,int)
+          add(double,double)
+
+33. Method Overriding - Child class provides new implementation of parent method. It required inheritance. 
+    This is also run time polymorphism.
+
+/////////////////////////////////////////// ENCAPSULATION ///////////////////////////////////////////
+
+34.  Encapsulation is the process of combining data(variables) and functions that operate on that data into a single unit called class,
+     while restricting the direct access to that data.
+
+     Hide the data and allow access through methods.
+
+     Example withoud Encapsulation : 
+
+     class Student{
+          String name;
+          int age;
+     }
+
+     public class Main {
+         public static void main(String[] args) {
+
+             Student s = new Student();
+
+             s.name = "Rahul";
+             s.age = -20;
+             System.out.println(s.age);
+         }
+     }
+
+     Here anyone can set age and name. The data is not protected.
+
+     Instead of making variable public make then private 
+     then s.age = -20 gives error. Now age cannot accessed outside the class.
+
+     We use getter and setter methods to access private variables. They also allow validation.
+
+     class Student {
+
+         private String name;  // only the same class can access private variables.
+         private int age;
+
+         public void setAge(int age) {
+             this.age = age;
+         }
+
+         public int getAge() {
+             return age;
+         }
+     }
+
+     ------------------------------
+
+     Student s = new Student();
+     s.setAge(20);
+     System.out.println(s.getAge());
+
+     Getters : return the value
+     Setters : update or change the value 
+
+
+     Advantages of Encapsulation : 
+     a) Date secruity
+     b) Date validation 
+     c) Better control 
+     d) Easier maintainance 
+     e) Flexibility 
+
+/////////////////////////////////////////// POLYMORPHISM ///////////////////////////////////////////
+
+35.  Polymorphism in Java is the ability of one method or object to perform different actions depending on how it is used.
+     There are two types of polymorphism in java - 
+     
+     A) Compile time polymorphism ( Method Overloading ) - 
+        Method overloading means methods have same name but different parameters.
+     B) Run time polymorphism ( Method Overriding ) - 
+        Method overriding happends when child class provides its own implementation of method inherited from parent class.
+
+          @Override
+          void sound() {
+              System.out.println("Dog barks");
+          }
+
+          @Override tells the compiler - I intend to override a parent method.
+
+          Rules of method overriding - 
+          a) Method name and method parameters must be same.
+          b) Return type must be same. 
+          c) The child method cannot reduce the visibility of parent method ( public cannot become private ).
+          d) final method cannot be overridden.
+          e) static methods are hidden, not overridden.
+
+36.  Upcasting - Upcasting means storing a child object into parent reference.
+     Animal a = new Dog();
+     This is safe, automatic, enables runtime polymorphism.
+
+37.  Downcasting - This converts a parent reference back to child reference.
+     Animal a = new Dog();
+     Dog d = (Dog) a;
+
+     It should be only done when the object is of child type.
+
+     Polymorphism example - 
+
+     Animal[] animals = {
+          new Dog(),
+          new Cat(),
+          new Lion()
+     };
+
+     for (Animal animal : animals) {
+          animal.sound();
+     }
+
+     Each objects responds with its own implementation.
+
+/////////////////////////////////////////// ABSTRACTION ///////////////////////////////////////////
+38. Abstraction is the process of hiding implementation details and exposing the essential functionality.
+    Java provides abstraction mainly through two ways - a) Abstract classes, and b) Interfaces
+
+39. Abstract Class - It is a class that cannot be instantiated. It can have constructor.
+
+    abstract class Animal{
+
+    }
+
+    Animal a = new Animal() // error 
+
+    Because abstract class represents incomplete concept.
+
+40. Abstract methods - Abstract methods has no body, no implementation. Just a declaration.
+
+    abstract class Animal{
+        abstract void sound();
+    }
+
+    Every animal has a sound. But every animal implements it differently.
+
+41. Interface- An interface in Java is a blueprint that defines set of behaviour that a class must implement, without specifying how those 
+    behaviour works. They dont have constructors.
+    We use interface when unrelated classes need the same capability. We use classes when classes share code.
+    Variables in interfaces are implicitely "public static final".
+
+42. There are 3 types of interfaces - 
+    a) Normal Interface - contain multiple interfaces.
+    b) Functional Interface - contain exactly one interface method making it compatible with lambda expressions and functional programming.
+    c) Marker Interface - Contain zero methods or constants. It simply marks or tags class to give it special instructions at runtime.
+
+43. JIT - JIT is the main component of JRE that improves application performance by compiling Java bytecode into native machine code at runtime.
+
+44. Bytecode - Bytecode is the intermediate, machine independent instruction set generated by Java compiler(javac) when it compiles Java 
+    sourcecode.
+
+45. Multiple Inherintance - Multiple inheritance means one class inherits from more that one parent class.
+
+
+    class A {
+        void display() {
+            System.out.println("A");
+        }
+    }
+    
+    class B {
+        void display() {
+            System.out.println("B");
+        }
+    }
+    
+    class C extends A, B {
+    
+    }
+
+    Here C inherits from both A and B.
+
+    Now imagine,
+
+    C obj = new C();
+    obj.display();
+
+    There is ambiguity which class method should a Java call.
+    This problem is resolved using interfaces - 
+
+    interface A {
+        void display();
+    }
+
+    interface B {
+        void display();
+    }
+
+    class C implements A, B {
+
+        @Override
+        public void display() {
+            System.out.println("Hello");
+        }
+
+    }
+
+    When we implements two interface and both interfaces contain same method but in child class which implements these classes there is only one implementation for both the interfaces.
+
+/////////////////////////////////////////// EXCEPTION HANDLING ///////////////////////////////////////////
+46. Exception handling in java is a mechanism to handle runtime errors without terminating the application. It improves the reliability
+    and maintainability of software by separating normal program logic from error-handling logic.
+
+47. Exception - An exception is an event that occurs during the execution of a program that disrupts the normal flow of instructions.
+    Exceptions mainly occur due to - 
+
+    - dividing a number by zero
+    - accessing an invalid array index 
+    - accessing a null value 
+    - file not found 
+    - db connection failure 
+    - invalid user input 
+
+48. Hiearchy of Exceptions - 
+                                            Object
+                                              |
+                                           Throwable
+                                           /       \
+                                        Error   Exception
+                                                    |
+                                            Runtime Exception
+                                        
+    a) Throwable - All exceptions in Java are derived from Throwable class. Root class of all exceptions and errors.
+    b) Error - Represents serious system level problems. e.g. OutOfMemoryError, StackOverFlowError. Error should not generally handled in 
+       application code.
+    c) Exception - Represents conditions that application can catch and handle.
+    d) Two types of exceptions - Checked & Unchecked exceptions.
+
+        A) Checked Exceptions - checked during compilation. Must be handled using try-catch, throws like -> IOException,SQLException,ClassNotFoundException
+        b) Unchecked Exceptions - Occur during runtime and derived from RuntimeException. Examples- NullPointerException, ArithmaticException,
+           ArrayIndexOutOfBoundsException, NumberFormatException.
+
+49. Java provides 5 keywords to handle exceptions - try,catch,finally,throw and throws.
+    try block contain code that may produce an exception.
+    catch block handles the exception.
+    finally block always executed whether exception occurs or not. Used for cleanup operations.
+
+    Multiple catch-blocks - 
+
+    try {
+        String s = null;
+        System.out.println(s.length());
+
+    } catch (NullPointerException e) {
+        System.out.println("Null Object");
+
+    } catch (Exception e) {
+        System.out.println("General Exception");
+
+    } finally {
+        System.out.println("Finally executed.");
+    }
+
+50. Throwing exceptions - Java allows programmers to create and throw exceptions manually. throw keyword is used to explicitly throw an 
+    exception.
+
+    public class Main {
+
+        public static void checkAge(int age) {
+            if(age < 18) {
+                throw new ArithmeticException("Not eligible");
+            }
+
+            System.out.println("Eligible");
+        }
+
+        public static void main(String[] args) {
+            checkAge(15);
+        }
+    }
+
+51. throws keyword is used to declare exceptions that a method may throw.
+
+    import java.io.IOException;
+
+    public class Main {
+
+        static void readFile() throws IOException {
+            FileReader file = new FileReader("data.txt");
+            BufferedReader br = new BufferedReader(file);
+
+            System.out.println(br.readLine());
+            br.close();
+        }
+
+        public static void main(String[] args) {
+            try {
+                readFile();
+            } catch(IOException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
+52. Difference in throw and throws - 
+    a) throw used inside method, throws is used in method declaration.
+    b) throw throws one exception, throws declare one or more exceptions.
+    c) throw used to create exception, used to inform caller.
+
+53. Array Exceptions - 
+    ArrayStoreException comes when we try to store the wrong type of object into an array of objects.
+
+54. Try-with-resource( Java 7+ ) - Automatically closes resources after user. It is useful for file handling, db connections, network streams.
+    without resoource you have to do br.close(), but with try(...) it is automatically closed after use.
+
+55. User-defined exceptions - 
+    class InvalidAgeExceptions extends Exception{
+        InvalidAgeExceptions(String message ){
+            super(message)
+        }
+    }
+
+    public class Main{
+        static void validate(int age) throws InvalidAgeExceptions{
+            if ( age < 18 ){
+                throw new InvalidAgeExceptions("Age must be 18 or above");
+            }
+
+            System.out.println("Eligible");
+        }
+
+        public static void main(String[] args){
+            try{
+                validate(15);
+            }catch(Exception e){
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
+56. Exception Propgation - 
+    When a exception is not handled in a method, it propgates moved up to the calling method until it is handled or reaches the JVM.
+
+57. Important exception methods - 
+
+    try {
+        int x = 10 / 0;
+    }
+    catch(Exception e) {
+
+        System.out.println(e.getMessage()); // Returns the exception message. Output: / by zero
+
+        System.out.println(e); // Java internally calls e.toString(). Output: ExceptionClassName: Message
+        e.printStackTrace(); // Print the complete stacktrace.
+    }
+
+    StackTrace output - 
+    java.lang.ArithmeticException: / by zero
+    at Main.main(Main.java:4)
+
+/////////////////////////////////////////// COLLECTIONS //////////////////////////////////////////////////
+58. The Java Collections framework is the set of interfaces and classes used to store and manipulate groups of data efficiently.
+
+                                            Iterable
+                                               |
+                                           Collection
+                                           /   |    \
+                                        List  Set  Queue
+                                         /     |      \
+                                        /      |       \
+                                ArrayList   HashSet    PriorityQueue
+                                LinkedList  TreeSet    ArrayDeque
+                                Vector     LinkedHashSet
+                                Stack
+                                                    
+
+    Map is separate - 
+                                             Map - HashTable
+                                            / | \
+                                Hashmap TreeMap LinkedHashMap
+
+    Map is a part of collection framework does not implement the collection interface.
+
+49. List - 
+    It store elements in a order, allows duplicates, and index-based.
+
+      A) ArrayList - Dynamic array,fast random access (get()), shows insertion, deletion in middle.
+      B) LinkedList - Fast insertion/deletion
+      C) Stack - LIFO, push(),pop(),peek()
+      D) Vector - synchroized, thread-safe, slower than ArrayList.
+
+50. Set - No duplicates, no indexing.
+      A) HashSet - uses HashMap internally. No duplicates, unordered, allows one null.
+      B) LinkedHashSet - Maintains insertion order, slightly slower.
+      C) TreeSet - Uses red-black tree, sorted, no null.
+
+51. Queue - FIFO- offer(),poll(),peek() 
+
+
+
+
+    
+
+/////////////////////////////////////////// READING CSV //////////////////////////////////////////////////
+
+1.  Why FileReader ? 
+    Java program run in memory, so to use data from file, Java needs a way to open a file and read its content.
+    Java provides classes like - 
+
+    a) FileReader - opens a file and read characters from it.
+    b) BufferedReader - makes reading faster and easier by storing chunks of data in memory and allowing us to read line by line.
+
+2.  Java.io - It is Java input/output package. It contains classes used for - Reading files, writing files and handling i/o operations.
+
+3.  BufferedReader - use to read text efficiently, especially line by line.
+
+4.  FileReader - Used to connect java program to a file.
+
+5.  new BufferedReader(new FileReader(file)) - Here BufferedReader takes FileReader because BufferedReader does not directly knows 
+    how to open file. It only knows how to read from other reader. FileReader knows where the file is and BufferedReader knows how
+    to read data efficiently.

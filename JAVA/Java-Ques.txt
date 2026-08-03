@@ -1,0 +1,67 @@
+1.  Java is pass by value or pass by reference ?
+    Java is pass by value. For premitive types actual value is copied and for non-primitive types reference is copied so changes to the 
+    object state are visible outside the method.
+
+2.  From where instance variables got their initial values ?
+    Instance variables reveice their default values from the JVM during object creation. After that default constructor is executed.
+    The default constructor does not assign those default values.
+
+3.  What is string pool?
+    String pool stores string literals so that identical literals share the same object.
+
+4.  Can we make class static ? 
+    No, we cannot make a top-level class static. The static modifier is applicable only to members that are declared inside another class, 
+    such as variables, methods, blocks, and nested classes. A top-level class is not a member of any other class, so it cannot be declared 
+    static.
+    However, we can declare a nested (inner) class as static, which is called a static nested class. Since it is associated with the outer 
+    class rather than an instance of the outer class, it can be instantiated without creating an object of the outer class.
+
+5.  Can we override static method in Java?
+    No we cannot override static method in Java because they belong to class rather than object. If a subclass declared the method which is static
+    with the same signature as the parent class, it is called method hiding, not overriding. The method that get executed is determined at compile time
+    whereas instance method overriding is resolved at runtime using dynamic method dispatch( runtime polymorphism ).
+
+6.  What is compile time and run time ? 
+    Compile-time in Java compiler checks your code before code runs. During compile time compiler checks syntax errors, type compatibility, 
+    method overloading, resolves static methods and variables. The compiler only knows reference type not the actual object that will exist 
+    during execution.
+
+    Parent p = new Child();
+
+    After looking the like compiler says the reference type is Parent so I will call p.show(). It does not care whether object is of child.
+    This is also called compile-time binding ( early binding ).
+
+    Runtime is when java is executing your program. Now the JVM knows the real object stored in the reference.
+    Method overloading - compile-tiime polymorphism,
+    Method overriding - run-time polymorphism.
+
+7.  Can a constructor be static ?
+    No, A constructor is used to initialize a object. So it is invoked when an object is created using new. A static member is belong to class
+    not to object. If constructor is static, they wouldnot tied to object creation, defeating their purpose.
+
+8.  Can a constructor be final ?
+    No the purpose of final on method is to prevent overriding. Constructor are never inherited so they cannot be overridden. Since overriding 
+    is impossible, making a constructor final has no meaning.
+
+9.  Can a constructor be abstract ?
+    An abstract method has no implementation and must be implemented by subclass. A constructor must have implementation because it is executs
+    when object is created.
+    Also constructors are never inherited, so a subclass cannot implement an abstract constructor.
+
+10. Can we call a overridden method from a superclass inside the subclass. Also explain this and super in the context.
+    Yes, we call the overridden method of superclass using super keyword. this refer to the current object and invokes the overridden method
+    in the current class, whereas super refer to the immediate parent class and allows us to invoke the parent's implementation of the overridden
+    method.
+
+11. Why cannot we override final method in Java?
+    Final method prevents the method from overriding. Final method means: the implementation provided by this class should not be changed by 
+    subclass. final variable value cannot be changed. final method cannot be overridden and final class cannot be inherited.
+
+12. Can we create an object of an abstract class in Java? If not, then why do we have constructors in abstract classes?
+    No we cannot create object of abstract class directly because it may contain abstract methods without implementation. However, an abstract
+    class can have constructors because its constructor is used to initialize the common properties of child class objects. Whenever a subclass
+    object is created the abstract class constructor is called through super().
+
+13. Difference between abstract class and interface in Java?
+
+
